@@ -13,6 +13,7 @@ public class GameScreen extends ScreenAdapter{
 	private Texture pacmanImg;
 	private World world;
 	private WorldRenderer worldRenderer;
+	private boolean isPacmanMove;
 	
 	public GameScreen(PacmanGame pacmanGame){
 		this.pacmanGame = pacmanGame;
@@ -25,22 +26,33 @@ public class GameScreen extends ScreenAdapter{
 	public void render(float delta){
 		update(delta);
 		
-		
 		worldRenderer.render(delta);
 	}
 	
 	private void update(float delta){
+		updatePacmanDirection();
+		world.update(delta);
+	}
+	
+	private void updatePacmanDirection(){
+		isPacmanMove = false;
+		
 		if(Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT)){
-			world.getPacman().move(Pacman.DIRECTION_LEFT);
+			world.getPacman().setNextDirection (Pacman.DIRECTION_LEFT);
+			isPacmanMove = true;
 		}
 		if(Gdx.input.isKeyPressed(Keys.D) || Gdx.input.isKeyPressed(Keys.RIGHT)){
-			world.getPacman().move(Pacman.DIRECTION_RIGHT);
+			world.getPacman().setNextDirection (Pacman.DIRECTION_RIGHT);
+			isPacmanMove = true;
 		}
 		if(Gdx.input.isKeyPressed(Keys.W) || Gdx.input.isKeyPressed(Keys.UP)){
-			world.getPacman().move(Pacman.DIRECTION_UP);
+			world.getPacman().setNextDirection (Pacman.DIRECTION_UP);
+			isPacmanMove = true;
 		}
 		if(Gdx.input.isKeyPressed(Keys.S) || Gdx.input.isKeyPressed(Keys.DOWN)){
-			world.getPacman().move(Pacman.DIRECTION_DOWN);
+			world.getPacman().setNextDirection (Pacman.DIRECTION_DOWN);
+			isPacmanMove = true;
 		}
+		if(!isPacmanMove) world.getPacman().setNextDirection (Pacman.DIRECTION_STILL);
 	}
 }

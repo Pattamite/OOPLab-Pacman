@@ -7,8 +7,9 @@ public class World {
 	
 	public World(PacmanGame pacmanGame){
 		this.pacmanGame = pacmanGame;
-		pacman = new Pacman(100, 100);
 		maze = new Maze();
+		pacman = new Pacman(60, 140, maze);
+		
 	}
 	
 	Pacman getPacman(){
@@ -17,5 +18,9 @@ public class World {
 	
 	Maze getMaze(){
 		return maze;
+	}
+	
+	public void update(float delta){
+		pacman.update();
 	}
 }
