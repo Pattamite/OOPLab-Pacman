@@ -13,18 +13,15 @@ public class Pacman {
 	
 	private int speed = 10;
 	
-	public Pacman(int x, int y)
-	{
+	public Pacman(int x, int y){
 		position = new Vector2(x, y);
 	}
 	
-	public Vector2 getPosition()
-	{
+	public Vector2 getPosition(){
 		return position;
 	}
 	
-	public void move(int dir)
-	{
+	public void move(int dir){
 		switch(dir)
 		{
 		case DIRECTION_UP:

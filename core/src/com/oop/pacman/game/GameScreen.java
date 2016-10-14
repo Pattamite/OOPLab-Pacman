@@ -14,8 +14,7 @@ public class GameScreen extends ScreenAdapter{
 	private World world;
 	private WorldRenderer worldRenderer;
 	
-	public GameScreen(PacmanGame pacmanGame)
-	{
+	public GameScreen(PacmanGame pacmanGame){
 		this.pacmanGame = pacmanGame;
 		pacmanImg = new Texture("pacman.png");
 		world = new World(pacmanGame);
@@ -23,30 +22,24 @@ public class GameScreen extends ScreenAdapter{
 	}
 	
 	@Override
-	public void render(float delta)
-	{
+	public void render(float delta){
 		update(delta);
 		
 		
 		worldRenderer.render(delta);
 	}
 	
-	private void update(float delta)
-	{
-		if(Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT))
-		{
+	private void update(float delta){
+		if(Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT)){
 			world.getPacman().move(Pacman.DIRECTION_LEFT);
 		}
-		if(Gdx.input.isKeyPressed(Keys.D) || Gdx.input.isKeyPressed(Keys.RIGHT))
-		{
+		if(Gdx.input.isKeyPressed(Keys.D) || Gdx.input.isKeyPressed(Keys.RIGHT)){
 			world.getPacman().move(Pacman.DIRECTION_RIGHT);
 		}
-		if(Gdx.input.isKeyPressed(Keys.W) || Gdx.input.isKeyPressed(Keys.UP))
-		{
+		if(Gdx.input.isKeyPressed(Keys.W) || Gdx.input.isKeyPressed(Keys.UP)){
 			world.getPacman().move(Pacman.DIRECTION_UP);
 		}
-		if(Gdx.input.isKeyPressed(Keys.S) || Gdx.input.isKeyPressed(Keys.DOWN))
-		{
+		if(Gdx.input.isKeyPressed(Keys.S) || Gdx.input.isKeyPressed(Keys.DOWN)){
 			world.getPacman().move(Pacman.DIRECTION_DOWN);
 		}
 	}
